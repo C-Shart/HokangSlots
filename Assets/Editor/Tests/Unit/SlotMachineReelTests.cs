@@ -1,7 +1,8 @@
-﻿using NUnit.Framework;
+﻿using Assets._Scripts.Engine;
+using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Assets._Scripts.Engine;
 
 [TestFixture]
 public class SlotMachineReelTests 
@@ -18,5 +19,13 @@ public class SlotMachineReelTests
         Assert.IsNotNull(reel);
         CollectionAssert.Contains(reelImages, reel.CurrentImage);
         Assert.AreEqual(ReelImage.Bell, reel.CurrentImage);
+    }
+
+    [Test]
+    [ExpectedException(typeof(ArgumentNullException))]
+    public void ConstructorThrowsWhenImagesIsNull()
+    {
+        var seed = 13;
+        new SlotMachineReel(null, seed);
     }
 }

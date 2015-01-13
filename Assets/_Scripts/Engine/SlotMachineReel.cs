@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Assets._Scripts.Engine
@@ -19,6 +20,11 @@ namespace Assets._Scripts.Engine
 
         public SlotMachineReel(List<ReelImage> reelImages, int seed)
         {
+            if (reelImages == null)
+            {
+                throw new ArgumentNullException("reelImages");
+            }
+
             _reelImages = reelImages;
             _seed = seed;
         }
